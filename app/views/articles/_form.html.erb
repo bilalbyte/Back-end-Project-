@@ -1,0 +1,27 @@
+<div class="flex flex-col justify-center items-center ">
+  <%= form_with model: article, class: "w-full max-w-xs mt-5" do |form| %>
+<div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+<div class="mb-4">
+   <%= form.label :title, class: "block text-gray-700 text-sm font-bold mb-2" %>
+       <%= form.text_field :title, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none " %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <p class="text-red-500 text-xs italic"><%= message %></p>
+        <% end %>
+ </div>
+
+ <div class="mb-6">
+     <%= form.label :body, class: "block text-gray-700 text-sm font-bold mb-2" %>
+     <%= form.text_area :body, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none " %>
+       <% article.errors.full_messages_for(:body).each do |message| %>
+        <p class="text-red-500 text-xs italic"><%= message %></p>
+        <% end %>
+</div>
+
+<div class="flex items-center justify-between">
+        <%= form.submit "Save", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none" %>
+</div>
+
+    </div>
+ <% end %>
+</div>

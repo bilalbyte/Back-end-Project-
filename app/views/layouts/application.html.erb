@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="min-h-screen bg-gray-100">
+    <%= render 'layouts/header' %>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8"> 
+      <div class="bg-white shadow overflow-hidden sm:rounded-lg mt-4 p-6">
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
+    </main>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <% if notice %>
+        <p class="text-sm text-green-500 bg-green-100 p-2 rounded"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="text-sm text-red-500 bg-red-100 p-2 rounded"><%= alert %></p>
+      <% end %>
+
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %> bg-blue-100 p-2 rounded">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>
